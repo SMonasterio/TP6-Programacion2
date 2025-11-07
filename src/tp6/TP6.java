@@ -4,9 +4,9 @@
  */
 package tp6;
 
-import CP2.Autor;
-import CP2.Biblioteca;
-import CP2.Libro;
+import CP3.Curso;
+import CP3.Profesor;
+import CP3.Universidad;
 
 /**
  *
@@ -71,7 +71,7 @@ public class TP6 {
         inventario.mostrarCategoriasDisponibles();*/
 
         // CASO PRACTICO 2
-        Biblioteca biblioteca = new Biblioteca("Biblioteca Central");
+        /*Biblioteca biblioteca = new Biblioteca("Biblioteca Central");
 
         Autor a1 = new Autor("A001", "Gabriel García Márquez", "Colombiano");
         Autor a2 = new Autor("A002", "J.K. Rowling", "Británica");
@@ -108,8 +108,58 @@ public class TP6 {
         biblioteca.mostrarAutoresDisponibles();
 
         // Eliminar la biblioteca 
-        biblioteca.eliminarBiblioteca();
+        biblioteca.eliminarBiblioteca();*/
+
         // CASO PRACTICO 3
+        // Crear profesores y cursos
+        Profesor prof1 = new Profesor("P001", "Ana García", "Matemática");
+        Profesor prof2 = new Profesor("P002", "Carlos López", "Programación");
+        Profesor prof3 = new Profesor("P003", "María Pérez", "Historia");
+
+        Curso c1 = new Curso("C001", "Álgebra I");
+        Curso c2 = new Curso("C002", "Programación I");
+        Curso c3 = new Curso("C003", "Historia Universal");
+        Curso c4 = new Curso("C004", "Estructuras de Datos");
+        Curso c5 = new Curso("C005", "Filosofía Moderna");
+
+        // Crear universidad y agregar profesores y cursos
+        Universidad uni = new Universidad("Universidad Nacional");
+        uni.agregarProfesor(prof1);
+        uni.agregarProfesor(prof2);
+        uni.agregarProfesor(prof3);
+        uni.agregarCurso(c1);
+        uni.agregarCurso(c2);
+        uni.agregarCurso(c3);
+        uni.agregarCurso(c4);
+        uni.agregarCurso(c5);
+
+        // Asignar profesores a cursos
+        uni.asignarProfesorACurso("C001", "P001");
+        uni.asignarProfesorACurso("C002", "P002");
+        uni.asignarProfesorACurso("C004", "P002");
+        uni.asignarProfesorACurso("C003", "P003");
+
+        // Listar cursos y profesores
+        uni.listarCursos();
+        uni.listarProfesores();
+
+        // Cambiar el profesor
+        System.out.println("\n--- CAMBIAR PROFESOR DEL CURSO C004 ---");
+        uni.asignarProfesorACurso("C004", "P001");        
+        uni.listarProfesores();
+
+        // Eliminar curso  
+        System.out.println("\n--- ELIMINAR CURSO C001 ---");
+        uni.eliminarCurso("C001");
+        uni.listarProfesores();
+
+        // Eliminar profesor  
+        System.out.println("\n--- ELIMINAR PROFESOR P002 ---");
+        uni.eliminarProfesor("P002");
+        uni.listarCursos();
+
+        // Reporte cursos-profesor
+        uni.reporteCursosPorProfesor();
     }
 
 }
