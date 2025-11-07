@@ -4,9 +4,9 @@
  */
 package tp6;
 
-import CP1.CategoriaProducto;
-import CP1.Inventario;
-import CP1.Producto;
+import CP2.Autor;
+import CP2.Biblioteca;
+import CP2.Libro;
 
 /**
  *
@@ -19,7 +19,7 @@ public class TP6 {
      */
     public static void main(String[] args) {
         // CASO PRACTICO 1
-        Inventario inventario = new Inventario();
+        /*Inventario inventario = new Inventario();
 
         // Crear productos y agregarlos al inventario
         Producto p1 = new Producto("P001", "Arroz", 850, 30, CategoriaProducto.ALIMENTOS);
@@ -68,9 +68,47 @@ public class TP6 {
         inventario.filtrarProductosPorPrecio(1000, 3000);
 
         // Categorias disponibles
-        inventario.mostrarCategoriasDisponibles();
+        inventario.mostrarCategoriasDisponibles();*/
 
         // CASO PRACTICO 2
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Central");
+
+        Autor a1 = new Autor("A001", "Gabriel García Márquez", "Colombiano");
+        Autor a2 = new Autor("A002", "J.K. Rowling", "Británica");
+        Autor a3 = new Autor("A003", "Julio Verne", "Francés");
+
+        // Agregar libro
+        biblioteca.agregarLibro("L001", "Cien años de soledad", 1967, a1);
+        biblioteca.agregarLibro("L002", "Harry Potter y la piedra filosofal", 1997, a2);
+        biblioteca.agregarLibro("L003", "Viaje al centro de la Tierra", 1864, a3);
+        biblioteca.agregarLibro("L004", "El amor en los tiempos del cólera", 1985, a1);
+        biblioteca.agregarLibro("L005", "Harry Potter y el prisionero de Azkaban", 1999, a2);
+
+        // Listar libros
+        biblioteca.listarLibros();
+
+        // Buscar por ISBN
+        System.out.println("\n--- BÚSQUEDA POR ISBN 'L003' ---");
+        Libro encontrado = biblioteca.buscarLibroPorIsbn("L003");
+        if (encontrado != null) {
+            encontrado.mostrarInfo();
+        }
+
+        // Filtro por año
+        biblioteca.filtrarLibrosPorAnio(1997);
+
+        // Eliminar por ISBN
+        biblioteca.eliminarLibro("L002");
+        biblioteca.listarLibros();
+
+        // Mostrar total de libros
+        System.out.println("\nCantidad total de libros en la biblioteca: " + biblioteca.obtenerCantidadLibros());
+
+        // Autores disponibles
+        biblioteca.mostrarAutoresDisponibles();
+
+        // Eliminar la biblioteca 
+        biblioteca.eliminarBiblioteca();
         // CASO PRACTICO 3
     }
 
